@@ -10,6 +10,7 @@ let package = Package(
     dependencies: [
         // EasyImagy
         .package(url: "https://github.com/koher/EasyImagy.git", from: "0.4.0-alpha"),
+        // Spectre
         .package(url: "https://github.com/kylef/Spectre.git", from: "0.8.0")
     ],
     targets: [
