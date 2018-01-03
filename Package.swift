@@ -18,6 +18,11 @@ let package = Package(
             name: "ShellCommandKit",
             dependencies: []),
         .target(
+            name: "DeviceControllerKit",
+            dependencies: [
+                "ShellCommandKit",
+            ]),
+        .target(
             name: "SwiftJumper",
             dependencies: [
                 "EasyImagy",
@@ -28,6 +33,12 @@ let package = Package(
             dependencies: [
                 "Spectre",
                 "ShellCommandKit"
+            ]),
+        .testTarget(
+            name: "DeviceControllerKitTests",
+            dependencies: [
+                "Spectre",
+                "DeviceControllerKit"
             ]),
     ]
 )
