@@ -55,7 +55,7 @@ public func testDeviceControllerKit() {
             do {
                 try FileManager.default.removeItem(atPath: "./Resources/\(filename)")
             } catch {
-                fatalError("")
+                fatalError("Error occured when delete \(filename).")
             }
         }
     }
