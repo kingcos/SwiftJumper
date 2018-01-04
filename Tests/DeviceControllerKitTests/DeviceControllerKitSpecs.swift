@@ -16,30 +16,21 @@ public func testDeviceControllerKit() {
     
     describe("----- Testing DeviceControllerKit -----") {
         
-        $0.it("should get one screenshot directly (Android)") {
-            prepareForGettingScreenshot()
+        $0.it("should be avaliable (Android)") {
+            let result = DeviceController.isAvaliable(.android)
             
-            let result = DeviceController.getScreenshot()
-
-            try expect(result != nil) == true
+            try expect(result) == true
         }
 
         $0.it("should get one screenshot (Android)") {
             prepareForGettingScreenshot()
             
-            let result = DeviceController.getScreenshot(.android)
+            let result = DeviceController.getScreenshot(.android, with: filename)
 
             try expect(result != nil) == true
         }
-
-        $0.it("should click inside the screen directly (Android)") {
-            DeviceController.clickInsideScreen(at: (100, 100, 100, 100),
-                                               during: 1)
-            
-            try expect(true) == true
-        }
         
-        $0.it("should click inside the screen (Android)") {
+        $0.it("should click inside the screen (Android) [PLEASE WATCH YOUR PHONE FOR TESTING]") {
             DeviceController.clickInsideScreen(.android,
                                                at: (100, 100, 100, 100),
                                                during: 1)
