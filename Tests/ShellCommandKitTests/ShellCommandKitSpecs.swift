@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import XCTest
 import Spectre
 
 @testable import ShellCommandKit
