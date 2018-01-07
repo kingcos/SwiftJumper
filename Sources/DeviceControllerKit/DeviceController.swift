@@ -65,7 +65,7 @@ extension DeviceController {
         }
     }
     
-    public func getDeviceModel() -> String? {
+    public func getModel() -> String? {
         switch system {
         case .android:
             let pattern = "model:(.*?) "

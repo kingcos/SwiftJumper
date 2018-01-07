@@ -12,7 +12,7 @@ import Spectre
 
 public func testDeviceControllerKit() {
     
-    let filename = "wejump_screenshot.png"
+    let filename = "swiftjumper_screenshot.png"
     let androidController = DeviceController(.android)
     
     describe("----- Testing DeviceControllerKit on Android -----") {
@@ -38,8 +38,8 @@ public func testDeviceControllerKit() {
             try expect(true) == true
         }
         
-        $0.it("should get device model") {
-            let result = androidController.getDeviceModel()
+        $0.it("should get model") {
+            let result = androidController.getModel()
             
             try expect(result != nil) == true
         }
