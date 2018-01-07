@@ -18,7 +18,7 @@ extension String {
                 String(self[Range($0.range, in: self)!])
             }
         } catch {
-            print(error.localizedDescription)
+            print(error)
         }
         
         return nil
