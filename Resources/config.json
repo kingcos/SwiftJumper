@@ -1,0 +1,18 @@
+{
+    "devices": [
+        {
+            "device": "default", 
+            "pressCoefficient": 1.392, 
+            "jumperHeight": 20, 
+            "jumperWidth": 70, 
+            "reference": "https://github.com/wangshub/wechat_jump_game/blob/master/config/default.json"
+        }, 
+        {
+            "device": "MI_5", 
+            "pressCoefficient": 1.475, 
+            "jumperHeight": 20, 
+            "jumperWidth": 70, 
+            "reference": "https://github.com/wangshub/wechat_jump_game/blob/master/config/mi/mi5_config.json"
+        }
+    ]
+}
