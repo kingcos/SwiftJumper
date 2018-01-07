@@ -7,8 +7,6 @@
 
 import XCTest
 
-@testable import ShellCommandKit
-
 class ShellCommandKitTests: XCTestCase {
 
     func testBySpectre() {

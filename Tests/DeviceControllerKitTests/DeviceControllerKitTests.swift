@@ -7,8 +7,6 @@
 
 import XCTest
 
-@testable import DeviceControllerKit
-
 class DeviceControllerKitTests: XCTestCase {
 
     func testBySpectre() {
