@@ -73,8 +73,9 @@ extension DeviceController {
                   let info = output.substringsWithPattern(pattern),
                       info.count > 0, // eg: model:MI_5
                   let colonIndex = info[0].index(of: ":") else { return nil }
-            
-            let model = info[0][info[0].index(after: colonIndex) ..< info[0].endIndex]
+            let startIndex = info[0].index(after: colonIndex)
+            let endIndex = info[0].index(before: info[0].endIndex)
+            let model = info[0][startIndex ..< endIndex]
             
             return String(model)
         case .ios:
