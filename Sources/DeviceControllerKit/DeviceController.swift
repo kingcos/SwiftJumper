@@ -14,11 +14,21 @@ public enum DeviceSystem {
 }
 
 public struct DeviceController {
-    public static func isAvaliable(_ system: DeviceSystem) -> Bool {
+    
+    var system: DeviceSystem
+    
+    public init(_ system: DeviceSystem) {
+        self.system = system
+    }
+    
+}
+
+extension DeviceController {
+    public func isAvaliable() -> Bool {
         switch system {
         case .android:
             let result = ShellCommand.run(["-c", "adb devices"]) ?? ""
-            print(result)
+            
             return result.hasSuffix("device\n\n")
         case .ios:
             break
@@ -27,8 +37,7 @@ public struct DeviceController {
         return false
     }
     
-    public static func getScreenshot(_ system: DeviceSystem,
-                                     with filename: String) -> String? {
+    public func getScreenshot(with filename: String) -> String? {
         switch system {
         case .android:
             _ = ShellCommand.run(["-c",
@@ -45,9 +54,8 @@ public struct DeviceController {
         return result
     }
     
-    public static func clickInsideScreen(_ system: DeviceSystem,
-                                         at position: (Int, Int, Int, Int),
-                                         during time: Int) {
+    public func clickInsideScreen(at position: (Int, Int, Int, Int),
+                                  during time: Int) {
         switch system {
         case .android:
             _ = ShellCommand.run(["-c",
@@ -55,5 +63,24 @@ public struct DeviceController {
         case .ios:
             break
         }
+    }
+    
+    public func getDeviceModel() -> String? {
+        switch system {
+        case .android:
+            let pattern = "model:(.*?) "
+            guard let output = ShellCommand.run(["-c", "adb devices -l"]),
+                  let info = output.substringsWithPattern(pattern),
+                      info.count > 0, // eg: model:MI_5
+                  let colonIndex = info[0].index(of: ":") else { return nil }
+            
+            let model = info[0][info[0].index(after: colonIndex) ..< info[0].endIndex]
+            
+            return String(model)
+        case .ios:
+            break
+        }
+        
+        return nil
     }
 }

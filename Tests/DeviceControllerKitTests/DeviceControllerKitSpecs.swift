@@ -13,29 +13,35 @@ import Spectre
 public func testDeviceControllerKit() {
     
     let filename = "wejump_screenshot.png"
+    let androidController = DeviceController(.android)
     
-    describe("----- Testing DeviceControllerKit -----") {
+    describe("----- Testing DeviceControllerKit on Android -----") {
         
-        $0.it("should be avaliable (Android)") {
-            let result = DeviceController.isAvaliable(.android)
+        $0.it("should be avaliable") {
+            let result = androidController.isAvaliable()
             
             try expect(result) == true
         }
 
-        $0.it("should get one screenshot (Android)") {
+        $0.it("should get one screenshot") {
             prepareForGettingScreenshot()
             
-            let result = DeviceController.getScreenshot(.android, with: filename)
+            let result = androidController.getScreenshot(with: filename)
 
             try expect(result != nil) == true
         }
         
-        $0.it("should click inside the screen (Android) [PLEASE WATCH YOUR PHONE FOR TESTING]") {
-            DeviceController.clickInsideScreen(.android,
-                                               at: (100, 100, 100, 100),
-                                               during: 1)
+        $0.it("should click inside the screen [PLEASE WATCH YOUR PHONE FOR TESTING]") {
+            androidController.clickInsideScreen(at: (100, 100, 100, 100),
+                                                during: 1)
             
             try expect(true) == true
+        }
+        
+        $0.it("should get device model") {
+            let result = androidController.getDeviceModel()
+            
+            try expect(result != nil) == true
         }
     }
     
