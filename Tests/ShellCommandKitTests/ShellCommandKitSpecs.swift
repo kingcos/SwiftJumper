@@ -14,19 +14,18 @@ public func testShellCommandKit() {
     
     describe("----- Testing ShellCommandKit -----") {
         
+        let arguments = ["-c", "swift --version"]
+        let expectResultPrefix = "Apple Swift"
+        
         $0.it("should run shell command just with arguments") {
-            let arguments = ["-c", "swift --version"]
             let result = ShellCommand.run(arguments) ?? ""
-            let expectResultPrefix = "Apple Swift version 4"
             
             try expect(result.contains(expectResultPrefix)) == true
         }
         
         $0.it("should run shell command with arguments and a launch path") {
-            let arguments = ["-c", "swift --version"]
             let launchPath = ShellLaunchPath.shell
             let result = ShellCommand.run(arguments, in: launchPath) ?? ""
-            let expectResultPrefix = "Apple Swift version 4"
             
             try expect(result.contains(expectResultPrefix)) == true
         }
